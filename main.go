@@ -1,7 +1,16 @@
 package main
 
-import "log"
+import (
+	"github.com/agilistikmal/jetship/app/routes"
+	"github.com/gofiber/fiber/v2"
+)
 
 func main() {
-	log.Println("JetShip")
+	app := fiber.New()
+	api := app.Group("/api")
+
+	// Register Routes
+	routes.PackageRoutes(api)
+
+	app.Listen(":9998")
 }
